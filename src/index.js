@@ -3,8 +3,8 @@ import Phaser from "phaser";
 const config = {
   type: Phaser.CANVAS,
   parent: "phaser-example",
-  width: 800,
-  height: 600,
+  width: window.innerWidth,
+  height: window.innerHeight,
   scene: {
     preload: preload,
     create: create
@@ -55,8 +55,8 @@ function create() {
   
   });
 
-  this.add.sprite(400,100, "logo").setOrigin(0.5).setScale(0.5).play("logo");
-  this.add.sprite(400,300, "fireballs").setOrigin(0.5).play("fireballs");
+  this.add.sprite(window.innerWidth /2,200, "logo").setOrigin(0.5).setScale(1.5).play("logo");
+  this.add.sprite(window.innerWidth /2,700, "fireballs").setOrigin(0.5).setScale(2).play("fireballs");
 
 
 }
