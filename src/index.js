@@ -1,8 +1,7 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
 
 const config = {
-  type: Phaser.AUTO,
+  type: Phaser.CANVAS,
   parent: "phaser-example",
   width: 800,
   height: 600,
@@ -13,20 +12,51 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-
+var bg ;
 function preload() {
-  this.load.image("logo", logoImg);
+
+this.load.multiatlas(
+    "logo",
+    "src/assets/logo/logo.json",
+    "src/assets/logo",
+);
+this.load.multiatlas(
+  "fireballs",
+  "src/assets/all fireballs/fireballs.json",
+  "src/assets/all fireballs",
+);
+
+
 }
 
 function create() {
-  const logo = this.add.image(400, 150, "logo");
-
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
+  this.anims.create({
+    key: "logo",
+    frames: this.anims.generateFrameNames("logo", {
+        start: 1,
+        end: 74,
+        zeroPad: 0,
+        prefix: "logo (",
+        suffix: ").png",
+    }),
+    repeat: -1,
+    repeatDelay: 1500,
   });
+  this.anims.create({
+    key: "fireballs",
+    frames: this.anims.generateFrameNames("fireballs", {
+        start: 0,
+        end: 20,
+        zeroPad: 0,
+        prefix: "all fireballs-",
+        suffix: ".png",
+    }),
+    repeat: -1,
+  
+  });
+
+  this.add.sprite(400,100, "logo").setOrigin(0.5).setScale(0.5).play("logo");
+  this.add.sprite(400,300, "fireballs").setOrigin(0.5).play("fireballs");
+
+
 }
