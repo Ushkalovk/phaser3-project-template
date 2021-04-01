@@ -17,13 +17,13 @@ function preload() {
 
 this.load.multiatlas(
     "logo",
-    "src/assets/logo/logo.json",
-    "src/assets/logo",
+    "dist/assets/logo/logo.json",
+    "dist/assets/logo",
 );
 this.load.multiatlas(
   "fireballs",
-  "src/assets/all fireballs/fireballs.json",
-  "src/assets/all fireballs",
+  "dist/assets/all fireballs/fireballs.json",
+  "dist/assets/all fireballs",
 );
 
 
